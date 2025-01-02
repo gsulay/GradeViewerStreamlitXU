@@ -1,10 +1,13 @@
 import streamlit as st
 import pandas as pd
+import json
+import requests
 
 DIRECTORY = {
-    "CE 16.1": {'blocks': ['B2'], 'file': 'CE16_1.xlsx'},
-    'CE 17.1L': {'blocks': ['B1','B2','B3'], 'file': 'CE17_1L.xlsx'},
-    'ESC 14': {'blocks': ['B1','B2','B3'], 'file': 'ESC 14.xlsx'}}
+    "CE 16.1": {'blocks': ['B2'], 'file': 'https://github.com/gsulay/GradeViewerStreamlitXU/raw/refs/heads/main/data/CE16_1.xlsx'},
+    'CE 17.1L': {'blocks': ['B1','B2','B3'], 'file': 'https://github.com/gsulay/GradeViewerStreamlitXU/raw/refs/heads/main/data/CE17_1L.xlsx'},
+    'ESC 14': {'blocks': ['B1','B2','B3'], 'file': 'https://github.com/gsulay/GradeViewerStreamlitXU/raw/refs/heads/main/data/ESC14.xlsx'}}
+UPDATE_PATH = 'https://raw.githubusercontent.com/gsulay/GradeViewerStreamlitXU/refs/heads/main/data/update.json'
 
 
 def load_file(file_path, sheet_name):
@@ -15,9 +18,10 @@ def load_file(file_path, sheet_name):
 def main():
     st.title("Grade Viewer (Classes under Engr. Sulay)")
     #Add the update date
-    st.markdown('''
+    resp = requests.get(UPDATE_PATH)
+    st.markdown(f'''
     <div style="position: fixed; bottom: 10px; right: 10px; font-size: 14px; color: #555; background-color: rgba(255, 255, 255, 0.8); padding: 5px 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);">
-        Updated as of 11:08:24 PM 02/01/2025
+        {json.loads(resp.text)['update']}
     </div>
     ''', unsafe_allow_html=True)
 
