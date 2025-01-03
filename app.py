@@ -49,6 +49,7 @@ def main():
             st.html('<hr>')
             try:
                 st.subheader("Grade:")
+
                 df = load_file(cur_dct['file'], sheet_name=selected_block)
                 isolated_df = df.loc[df['ID'] == int(slmis_id), :]
                 
@@ -57,10 +58,12 @@ def main():
                 st.dataframe(isolated_df)
             
             #Error Handling
-            except FileNotFoundError:
+            except FileNotFoundError :
                 st.write("Currently Uploading Data...")
-            except ValueError:
+            except ValueError:  
                 st.write("Invalid SLMIS ID.")
+            except requests.exceptions.HTTPError:
+                st.write("Currently Uploading Data...")
             except Exception as e:
                 st.write('Something went wrong. Please Contact the Engr. Gifrey John M. Sulay', e)
             
