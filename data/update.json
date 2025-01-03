@@ -1,1 +1,10 @@
-{"update": "Updated at 10:07 AM Friday, January 3, 2025 (GMT+8)"}
+{"update": "Updated at 10:07 AM Friday, January 3, 2025 (GMT+8)",
+"directory": {
+    "CE 16.1": {"blocks": ["B2"], 
+                "file": "https://github.com/gsulay/GradeViewerStreamlitXU/raw/refs/heads/main/data/CE16_1.xlsx"}, 
+    "CE 17.1L": {"blocks": ["B1", "B2", "B3"], 
+                "file": "https://github.com/gsulay/GradeViewerStreamlitXU/raw/refs/heads/main/data/CE17_1L.xlsx"}, 
+    "ESC 14": {"blocks": ["B1", "B2", "B3"], 
+                "file": "https://github.com/gsulay/GradeViewerStreamlitXU/raw/refs/heads/main/data/ESC14.xlsx"}
+            }
+}
