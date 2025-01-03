@@ -3,10 +3,7 @@ import pandas as pd
 import json
 import requests
 
-DIRECTORY = {
-    "CE 16.1": {'blocks': ['B2'], 'file': 'https://github.com/gsulay/GradeViewerStreamlitXU/raw/refs/heads/main/data/CE16_1.xlsx'},
-    'CE 17.1L': {'blocks': ['B1','B2','B3'], 'file': 'https://github.com/gsulay/GradeViewerStreamlitXU/raw/refs/heads/main/data/CE17_1L.xlsx'},
-    'ESC 14': {'blocks': ['B1','B2','B3'], 'file': 'https://github.com/gsulay/GradeViewerStreamlitXU/raw/refs/heads/main/data/ESC14.xlsx'}}
+
 UPDATE_PATH = 'https://raw.githubusercontent.com/gsulay/GradeViewerStreamlitXU/refs/heads/main/data/update.json'
 
 
@@ -25,6 +22,8 @@ def main():
     </div>
     ''', unsafe_allow_html=True)
 
+    DIRECTORY = json.loads(resp.text)['directory']
+    
     # Section Selection
     st.subheader("Select Section:")
     sections = DIRECTORY.keys()
