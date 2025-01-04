@@ -22,8 +22,8 @@ def main():
     </div>
     ''', unsafe_allow_html=True)
 
-    DIRECTORY = json.loads(resp.text)['directory']
-    
+    DIRECTORY = json.loads(resp.text)['directory']  #Get from update json
+
     # Section Selection
     st.subheader("Select Section:")
     sections = DIRECTORY.keys()
